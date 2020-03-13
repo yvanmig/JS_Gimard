@@ -1,0 +1,10 @@
+@font-face {
+  font-family: Constantia;
+  src: url("../fonts/constan.ttf");
+}
+body {
+  font-family: $font-main;
+  background-color: $color-main;  
+  position: relative;
+  height: 100vh;
+}

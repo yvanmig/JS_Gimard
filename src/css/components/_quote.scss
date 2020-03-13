@@ -1,0 +1,90 @@
+.char {
+  font-family: Constantia;
+  padding: 20px;
+  color: white;
+  font-size: 24px;
+  width: 45%;
+  margin-top: 50px;
+  &__image img{
+    width: 50%;
+    
+  }
+  &__author {
+    text-align: center;
+    font-style: italic;
+    margin-top: 20px;
+  }
+  &__name {
+    padding-bottom: 20px;
+    padding-top: 4%;
+    width: 50%;
+    font-size: 32px;
+  }
+  &__imageBack {
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+  }
+  &__mainStat {
+    padding-top: 9px;
+    font-size: 20px;
+  }
+  .disappear {
+    display: none;
+  }
+  .is-ready & {
+    background-color: rgba(black, 0.8);
+  }
+}
+.containerRoleStat {
+  display: flex;
+  padding-top: 30px;
+  #role {
+    width: 50%;
+  }
+}
+.containerRoles {
+  padding-top: 25px;
+  display: flex;
+  justify-content: space-around;
+  width: 70%;
+  margin: auto;
+  font-size: 18px;
+  .role2Padd {
+    padding: 0 15px;
+  }
+}
+.containerNameImage {
+  display: flex;
+  justify-content: space-between;
+  background-color: grey;
+  border-radius: 15px;
+  // clip-path: ellipse(99% 292% at 0% -12%);
+  
+}
+.containerNameImage img{
+  clip-path: ellipse(252px 322px at 0% -12%);
+}
+
+#containerLogoStat {
+  display: flex;
+  justify-content: space-evenly;
+  width: 50%;
+}
+#containerWinRate {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 25px;
+}
+.winBorder {
+  height: 5px;
+  width: 165px;
+  background-color: grey;
+}
+
+.winFill {
+  height: 5px;
+  width: 0%;
+  background-color: green;
+  transition: width 1s ease-out 2s;
+}
