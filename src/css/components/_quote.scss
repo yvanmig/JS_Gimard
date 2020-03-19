@@ -154,6 +154,24 @@
   width: 100%;
   justify-content: space-evenly;
 }
-.blocSelect:hover {
+.blocSelect:hover img{
   cursor: pointer;
+  animation: rotateAnim 3s infinite;
+}
+
+
+@keyframes rotateAnim {
+  0% {
+    transform: rotateY(0deg);
+  }
+  33% {
+    transform: rotateY(-90deg);
+  }
+
+  66% {
+    transform: rotateY(-180deg);
+  }
+  100% {
+    transform: rotateY(-360deg);
+  }
 }
