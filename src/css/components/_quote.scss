@@ -5,6 +5,7 @@
   font-size: 24px;
   width: 45%;
   margin-top: 50px;
+  border-radius: 10px;
   transition: all 0.3s ease-in-out;
   &__image img{
     width: 50%;
@@ -33,6 +34,12 @@
   }
   .is-ready & {
     background-color: rgba(black, 0.9);
+  }
+  #refresh {
+    padding-top: 20px;
+  }
+  #refresh:hover{
+    cursor: pointer;
   }
 }
 
@@ -91,7 +98,6 @@
   justify-content: space-between;
   background-color: grey;
   border-radius: 15px;
-  // clip-path: ellipse(99% 292% at 0% -12%);
   
 }
 .containerNameImage img{
@@ -127,6 +133,7 @@
 }
 
 #selectMode {
+  font-family: Constantia;
   background-color: black;
   color: white;
   border-radius: 20px;
@@ -146,4 +153,7 @@
   margin: auto;
   width: 100%;
   justify-content: space-evenly;
+}
+.blocSelect:hover {
+  cursor: pointer;
 }

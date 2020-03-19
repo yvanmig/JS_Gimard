@@ -31,7 +31,7 @@ export default class Quote {
         this.modeCarry = document.querySelector('.carry');
         this.modeSupport = document.querySelector('.support');
         this.modeInitiator = document.querySelector('.initiator');
-        this.boutonCarry = document.querySelector('.carry');
+        
     }
     initEvents() {
         
@@ -40,7 +40,7 @@ export default class Quote {
         this.modeCarry.addEventListener('click', event => this.getMode("Carry"));
         this.modeSupport.addEventListener('click', event => this.getMode("Support"));
         this.modeInitiator.addEventListener('click', event => this.getMode("Initiator"));
-        this.boutonCarry.addEventListener('click', event => this.getMode("Carry"));
+        // this.modeCarry.addEventListener('hover', event => this.getMode("Carry"));
         
         // this.refreshQuote();
     }
