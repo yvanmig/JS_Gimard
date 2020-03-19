@@ -1,18 +1,16 @@
 import $ from 'jquery';
 import { getStatName } from './helpers/statHelper'; //Helper pour traiter le nom de la stat principale
 /*
-* Objectif : récupérer une citation aléatoire à partir d'une API et l'afficher
+* Objectif : récupérer un personnage à l'aide de l'API OpenDota et afficher ses informations
 *
-* Étapes :
-* 1- Créer une référence vers les éléments du DOM qu'on va utiliser
-* 2- Récupérer une citation aléatoire à partir de l'API de QuotesOnDesign (https://quotesondesign.com/api/)
-* 3- Afficher la citation
 * */
 
 export default class Quote {
+    
     constructor() {
         this.initEls();
         this.initEvents();
+
     }
     initEls(){
         this.$els = {
@@ -28,9 +26,12 @@ export default class Quote {
             charRole3 : $('#role3'),
             charWinRate : $(".winRate"),
         }
+        this.refreshButton = document.querySelector('#refresh');
     }
     initEvents() {
         this.getQuote();
+        this.refreshButton.addEventListener('click', event => this.getQuote());
+        // this.refreshQuote();
     }
     getQuote() {
         const api = {
@@ -61,13 +62,12 @@ export default class Quote {
             console.log('error with the quote :', e);
         }); 
     }
-    renderChar(quote, mainStat, image, baseStrength, baseAgi, baseInt, roles, winRate) {
+    renderChar(charName, mainStat, image, baseStrength, baseAgi, baseInt, roles, winRate) {
         var urlImage = "https://api.opendota.com" + image; //URL de base contenant l'image. Concaténer avec le résultat de la requête
 
         //Faire comme une lootbox. Le cadre du personnage apparaît flouté, et en cliquant dessus, une petite animation se joue et les infos apparaissent
-        // this.$els.charImageBack.attr("src",urlImage);
         this.$els.charImage.attr("src",urlImage);
-        this.$els.charName.prepend(quote);
+        this.$els.charName.text(charName);
         this.$els.charMainStat.text(getStatName(mainStat)); //Traiter le nom avec un helper pour le transformer en nom compréhensible (str devient Strength)
         this.$els.charStat.text(baseStrength);
         this.$els.charAgi.text(baseAgi);
@@ -75,16 +75,15 @@ export default class Quote {
         this.$els.charRole1.text(roles[0]);
         this.$els.charRole2.text(roles[1]);
         if(roles[2] == undefined) { //Effacer la div du troisième rôle s'il n'en a pas
-            console.log("YA RIEN");
             this.$els.charRole3.addClass('disappear');
         } else {
             this.$els.charRole3.text(roles[2]);
             this.$els.charRole2.addClass('role2Padd');
         }
-        this.$els.charWinRate.append(winRate);
+        this.$els.charWinRate.text(winRate);
         
-        console.log(roles[2]);
         this.$els.container.addClass('is-ready');
 
     }
 }
+

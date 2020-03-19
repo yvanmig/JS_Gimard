@@ -1,5 +1,6 @@
 import '../css/app.scss';
 import Background from './background';
+import Class from './quote';
 
 
 class App {
@@ -10,6 +11,7 @@ class App {
     initApp () {
       // Start application
       new Background();
+      // new Class();
 
     }
 }
