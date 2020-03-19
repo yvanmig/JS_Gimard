@@ -25,15 +25,19 @@ export default class Quote {
             charRole2 : $('#role2'),
             charRole3 : $('#role3'),
             charWinRate : $(".winRate"),
+            charWinFill : $(".winFill"),
         }
         this.refreshButton = document.querySelector('#refresh');
     }
     initEvents() {
+        
         this.getQuote();
         this.refreshButton.addEventListener('click', event => this.getQuote());
+        
         // this.refreshQuote();
     }
     getQuote() {
+        $(".char").toggleClass('containerAppear'); //Brouiller le personnage tant que toutes les valeurs ne sont pas affichées
         const api = {
             endpoint: 'https://api.opendota.com/api/heroStats',  //point de sortie, requete ajax
         };
@@ -81,9 +85,11 @@ export default class Quote {
             this.$els.charRole2.addClass('role2Padd');
         }
         this.$els.charWinRate.text(winRate);
-        
+        this.$els.charWinFill.css("width", winRate+"%");
         this.$els.container.addClass('is-ready');
 
+
+        $(".char").toggleClass('containerAppear');
     }
 }
 

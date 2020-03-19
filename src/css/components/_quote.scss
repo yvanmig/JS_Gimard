@@ -5,6 +5,7 @@
   font-size: 24px;
   width: 45%;
   margin-top: 50px;
+  transition: all 0.3s ease-in-out;
   &__image img{
     width: 50%;
     
@@ -33,6 +34,12 @@
   .is-ready & {
     background-color: rgba(black, 0.9);
   }
+}
+
+.containerAppear {
+
+  filter: blur(0.6rem);
+  background-color: rgba($color: rgb(35, 51, 75), $alpha: 0.8);
 }
 #containerCharName {
   width: 100%;
@@ -77,19 +84,23 @@
 }
 #containerWinRate {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding-top: 25px;
 }
 .winBorder {
-  height: 5px;
-  width: 165px;
+  margin-top: 25px;
+  height: 7px;
+  width: 250px;
   background-color: grey;
+  border-radius: 2px;
 }
 
 .winFill {
-  height: 5px;
+  height: 7px;
   width: 0%;
   background-color: green;
-  transition: width 1s ease-out 2s;
+  transition: width 1s ease-out;
+  border-radius: 2px;
 }
