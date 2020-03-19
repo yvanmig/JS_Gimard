@@ -37,10 +37,31 @@
 }
 
 .containerAppear {
-
   filter: blur(0.6rem);
   background-color: rgba($color: rgb(35, 51, 75), $alpha: 0.8);
 }
+
+.containerSlide {
+  animation: slide 1.3s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+}
+@keyframes slide {
+  0% {
+
+  }
+  49% {
+      transform: translateX(40%);
+      opacity: 0;
+  }
+  50% {
+      transform: translateX(-40%);
+      opacity: 0;
+  }
+  100% {
+      transform: translateX(0%);
+      opacity: 1;
+  }
+}
+
 #containerCharName {
   width: 100%;
 
@@ -103,4 +124,26 @@
   background-color: green;
   transition: width 1s ease-out;
   border-radius: 2px;
+}
+
+#selectMode {
+  background-color: black;
+  color: white;
+  border-radius: 20px;
+  margin: auto;
+  width: 40%;
+  justify-content: space-evenly;
+  h2 {
+    font-size: 20px;
+    padding: 15px;
+  }
+}
+#containerSelect {
+  color: white;
+  padding: 15px;
+  border-radius: 20px;
+  display: flex;
+  margin: auto;
+  width: 100%;
+  justify-content: space-evenly;
 }
