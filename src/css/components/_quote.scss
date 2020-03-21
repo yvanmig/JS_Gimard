@@ -11,6 +11,14 @@
     width: 50%;
     
   }
+  &__back {
+    position: absolute;
+    width: 100%;
+  }
+  &__back img {
+    width: 100%;
+    height: auto;
+  }
   &__author {
     text-align: center;
     font-style: italic;

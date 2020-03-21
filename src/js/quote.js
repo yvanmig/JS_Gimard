@@ -15,6 +15,7 @@ export default class Quote {
     initEls(){
         this.$els = {
             charImage : $('.js-char-image'),
+            // charImageBack : $('.js-char-back'),
             charName : $('.js-char-name'),
             charMainStat : $('.js-char-mainStat'),
             charStat : $('.js-char-str'),
@@ -40,9 +41,6 @@ export default class Quote {
         this.modeCarry.addEventListener('click', event => this.getMode("Carry"));
         this.modeSupport.addEventListener('click', event => this.getMode("Support"));
         this.modeInitiator.addEventListener('click', event => this.getMode("Initiator"));
-        // this.modeCarry.addEventListener('hover', event => this.getMode("Carry"));
-        
-        // this.refreshQuote();
     }
     getQuote() {
         $(".char").addClass('containerAppear'); //Brouiller le personnage tant que toutes les valeurs ne sont pas affichées
@@ -74,6 +72,7 @@ export default class Quote {
             console.log('error with the quote :', e);
         }); 
     }
+
 
     //Fonction pour aller chercher un personnage dont le premier rôle est celui choisi par l'utilisateur, passé en paramètre
     getMode(nameRole) {
@@ -114,12 +113,14 @@ export default class Quote {
         }); 
     }
 
-
+//Mettre à jour la page avec les valeurs de la requête passées en paramètres
     renderChar(charName, mainStat, image, baseStrength, baseAgi, baseInt, roles, winRate) {
         var urlImage = "https://api.opendota.com" + image; //URL de base contenant l'image. Concaténer avec le résultat de la requête
 
         //Faire comme une lootbox. Le cadre du personnage apparaît flouté, et en cliquant dessus, une petite animation se joue et les infos apparaissent
         this.$els.charImage.attr("src",urlImage);
+        // this.$els.charImageBack.attr("src",urlImage);
+        // this.$els.charImageBack.css("background-image", "url("+urlImg+")");
         this.$els.charName.text(charName);
         this.$els.charMainStat.text(getStatName(mainStat)); //Traiter le nom avec un helper pour le transformer en nom compréhensible (str devient Strength)
         this.$els.charStat.text(baseStrength);
@@ -164,6 +165,6 @@ export default class Quote {
         function allImagesLoaded() {          
           $(".char").removeClass('containerAppear'); //Enlever le flou de la page une fois qu'on a tout chargé
         }
-}
+    }
 }
 

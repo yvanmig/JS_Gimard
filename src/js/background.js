@@ -61,7 +61,6 @@ export default class Background
 	addBackground(image) {
 		this.$Els.background.css('background-image', `url(${image.src})`);
 		this.$Els.background.addClass('is-ready');
-		console.log("COUCOU");
 		new Quote();
 		new Greeting();
 	}

@@ -8,6 +8,7 @@ const PATHS = {
 };
 
 config = {
+    // stats: {warnings:false},
     // Mode can be 'development' or 'production'
     mode: 'development',
 
