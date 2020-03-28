@@ -28,6 +28,7 @@ export default class Hero {
             charWinRate : $(".winRate"),
             charWinFill : $(".winFill"),
         }
+        //Déclarer mes éléments interactibles
         this.refreshButton = document.querySelector('#refresh');
         this.modeCarry = document.querySelector('.carry');
         this.modeSupport = document.querySelector('.support');
@@ -37,6 +38,7 @@ export default class Hero {
     initEvents() {
         
         this.getQuote();
+        //Lancer les écouteurs d'évènements et les fonctions associées
         this.refreshButton.addEventListener('click', event => this.getQuote());
         this.modeCarry.addEventListener('click', event => this.getMode("Carry"));
         this.modeSupport.addEventListener('click', event => this.getMode("Support"));
@@ -45,13 +47,13 @@ export default class Hero {
     getQuote() {
         $(".char").addClass('containerAppear'); //Brouiller le personnage tant que toutes les valeurs ne sont pas affichées
         const api = {
-            endpoint: 'https://api.opendota.com/api/heroStats',  //point de sortie, requete ajax
+            endpoint: 'https://api.opendota.com/api/heroStats',  //point de sortie, URL de la requête
         };
         $.ajaxSetup({cache:false});
 
         $.getJSON(api.endpoint) // Obtenir un fichier JSON avec le résulat de la requête
-        .then((response) => { //Si tout marche, on lance le then avec notre fichier JSON en parametre
-            console.log(response);
+        .then((response) => { //Si tout marche, on lance le then avec notre fichier JSON en paramètre
+            // console.log(response);
             var winRate =0;
             var indexRandom = Math.floor(Math.random()*response.length); //Variable pour aller chercher un personnage aléatoirement
             winRate = Math.floor((response[indexRandom].pro_win*100)/response[indexRandom].pro_pick);
