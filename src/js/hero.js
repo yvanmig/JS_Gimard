@@ -4,7 +4,8 @@ import { getStatName } from './helpers/statHelper'; //Helper pour traiter le nom
 * Objectif : récupérer un personnage à l'aide de l'API OpenDota et afficher ses informations
 *
 * */
-
+var startTime, currentTime;
+var firstLoading = new Boolean(true);
 export default class Hero {
     
     constructor() {
@@ -34,6 +35,7 @@ export default class Hero {
         this.modeSupport = document.querySelector('.support');
         this.modeInitiator = document.querySelector('.initiator');
         
+        
     }
     initEvents() {
         
@@ -45,6 +47,8 @@ export default class Hero {
         this.modeInitiator.addEventListener('click', event => this.getMode("Initiator"));
     }
     getQuote() {
+        startTime = performance.now();
+        console.log(startTime);
         $(".char").addClass('containerAppear'); //Brouiller le personnage tant que toutes les valeurs ne sont pas affichées
         const api = {
             endpoint: 'https://api.opendota.com/api/heroStats',  //point de sortie, URL de la requête
@@ -84,8 +88,8 @@ export default class Hero {
         };
         $.ajaxSetup({cache:false});
 
-        $.getJSON(api.endpoint) // Obtenir un fichier JSON avec le résulat de la requête
-        .then((response) => { //Si tout marche, on lance le then avec notre fichier JSON en parametre
+        $.getJSON(api.endpoint) 
+        .then((response) => { 
             console.log(response);
             var winRate =0;
             var indexRandom = Math.floor(Math.random()*response.length); //Variable pour aller chercher un personnage aléatoirement
@@ -118,11 +122,7 @@ export default class Hero {
 //Mettre à jour la page avec les valeurs de la requête passées en paramètres
     renderChar(charName, mainStat, image, baseStrength, baseAgi, baseInt, roles, winRate) {
         var urlImage = "https://api.opendota.com" + image; //URL de base contenant l'image. Concaténer avec le résultat de la requête
-
-        //Faire comme une lootbox. Le cadre du personnage apparaît flouté, et en cliquant dessus, une petite animation se joue et les infos apparaissent
         this.$els.charImage.attr("src",urlImage);
-        // this.$els.charImageBack.attr("src",urlImage);
-        // this.$els.charImageBack.css("background-image", "url("+urlImg+")");
         this.$els.charName.text(charName);
         this.$els.charMainStat.text(getStatName(mainStat)); //Traiter le nom avec un helper pour le transformer en nom compréhensible (str devient Strength)
         this.$els.charStat.text(baseStrength);
@@ -141,7 +141,7 @@ export default class Hero {
         this.$els.container.addClass('is-ready');
         
         this.checkImageLoad(); //Fonction pour vérifier que les images sont chargées, et enlever le flou une fois que c'est bon
-        $(".char").toggleClass('containerAppear');
+        // $(".char").toggleClass('containerAppear');
     }
 
     checkImageLoad(){
@@ -152,12 +152,21 @@ export default class Hero {
         // Step through each image in the DOM, clone it, attach an onload event
         // listener, then set its source to the source of the original image. When
         // that new image has loaded, fire the imageLoaded() callback.
+        currentTime = performance.now();
+        if(currentTime - startTime > 300 && firstLoading) {
+            $('.containerLoad').css('display', 'block');
+            alert("c'est long");
+            firstLoading = false;
+        }
         $('img').each(function(idx, img) {
+            
           $('<img>').on('load', imageLoaded).attr('src', $(img).attr('src'));
+          
         });
 
         // Incrémenter la variable pour chaque image chargée. 
         // Quand elles sont toutes chargées, lancer allImagesLoaded()
+        
         function imageLoaded() {
           imagesLoaded++;
           if (imagesLoaded == totalImages) {
@@ -166,6 +175,7 @@ export default class Hero {
         }
         function allImagesLoaded() {          
           $(".char").removeClass('containerAppear'); //Enlever le flou de la page une fois qu'on a tout chargé
+          $('.containerLoad').css('display', 'none');
         }
     }
 }

@@ -1,5 +1,6 @@
 .char {
   font-family: Constantia;
+  position: relative;
   padding: 20px;
   color: white;
   font-size: 24px;
@@ -7,6 +8,18 @@
   margin-top: 50px;
   border-radius: 10px;
   transition: all 0.3s ease-in-out;
+  .containerLoad {
+    position: absolute;
+    border-radius: 10px;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(black, 0.7);
+    margin: auto;
+    display: none;
+  }
   &__image img{
     width: 50%;
     
@@ -45,6 +58,10 @@
   }
   #refresh {
     padding-top: 20px;
+    p {
+      font-size: 18px;
+      padding-top: 14px;
+    }
   }
   #refresh:hover{
     cursor: pointer;
