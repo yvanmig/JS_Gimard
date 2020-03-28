@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import Greeting from './greeting';
-import Quote from './quote';
+import Hero from './hero';
 
 /*
 * Objectif : récupérer une image aléatoire à partir d'une API et l'afficher
@@ -61,7 +61,7 @@ export default class Background
 	addBackground(image) {
 		this.$Els.background.css('background-image', `url(${image.src})`);
 		this.$Els.background.addClass('is-ready');
-		new Quote();
+		new Hero();
 		new Greeting();
 	}
 }

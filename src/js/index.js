@@ -1,6 +1,6 @@
 import '../css/app.scss';
 import Background from './background';
-import Class from './quote';
+import Class from './hero';
 
 
 class App {

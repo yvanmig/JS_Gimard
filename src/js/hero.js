@@ -5,7 +5,7 @@ import { getStatName } from './helpers/statHelper'; //Helper pour traiter le nom
 *
 * */
 
-export default class Quote {
+export default class Hero {
     
     constructor() {
         this.initEls();
