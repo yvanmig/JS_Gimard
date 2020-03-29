@@ -14,7 +14,6 @@ export default class Hero {
     initEls(){
         this.$els = {
             charImage : $('.js-char-image'),
-            // charImageBack : $('.js-char-back'),
             charName : $('.js-char-name'),
             charMainStat : $('.js-char-mainStat'),
             charStat : $('.js-char-str'),
