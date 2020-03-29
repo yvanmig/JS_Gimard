@@ -79,7 +79,7 @@ export default class Hero {
     getMode(nameRole) {
         $(".char").addClass('containerAppear'); //Brouiller le personnage tant que toutes les valeurs ne sont pas affichées
         const api = {
-            endpoint: 'https://api.opendota.com/api/heroStats',  //point de sortie, requete ajax
+            endpoint: 'https://api.opendota.com/api/heroStats',  //point de sortie
         };
         $.ajaxSetup({cache:false});
 
@@ -136,26 +136,24 @@ export default class Hero {
         this.$els.container.addClass('is-ready');
         
         this.checkImageLoad(); //Fonction pour vérifier que les images sont chargées, et enlever le flou une fois que c'est bon
-        // $(".char").toggleClass('containerAppear');
     }
 
+
+/*     Vérifier que toutes les images sont chargées avant d'enlever le flou
+       https://cobwwweb.com/wait-until-all-images-loaded 
+*/
     checkImageLoad(){
         var imagesLoaded = 0;
         // Total images is the total number of <img> elements on the page.
         var totalImages = $('img').length;
 
-        // Step through each image in the DOM, clone it, attach an onload event
-        // listener, then set its source to the source of the original image. When
-        // that new image has loaded, fire the imageLoaded() callback.
-        $('img').each(function(idx, img) {
-            
-          $('<img>').on('load', imageLoaded).attr('src', $(img).attr('src'));
-          
+        // Parcourir chaque image du DOM, y attacher l'écouteur d'événement 'load' qui appelle la fonction imageLoaded()        
+        $('img').each(function(idx, img) {            
+          $('<img>').on('load', imageLoaded).attr('src', $(img).attr('src'));          
         });
-
+        
         // Incrémenter la variable pour chaque image chargée. 
         // Quand elles sont toutes chargées, lancer allImagesLoaded()
-        
         function imageLoaded() {
           imagesLoaded++;
           if (imagesLoaded == totalImages) {
