@@ -4,8 +4,6 @@ import { getStatName } from './helpers/statHelper'; //Helper pour traiter le nom
 * Objectif : récupérer un personnage à l'aide de l'API OpenDota et afficher ses informations
 *
 * */
-var startTime, currentTime;
-var firstLoading = new Boolean(true);
 export default class Hero {
     
     constructor() {
@@ -47,8 +45,6 @@ export default class Hero {
         this.modeInitiator.addEventListener('click', event => this.getMode("Initiator"));
     }
     getQuote() {
-        startTime = performance.now();
-        console.log(startTime);
         $(".char").addClass('containerAppear'); //Brouiller le personnage tant que toutes les valeurs ne sont pas affichées
         const api = {
             endpoint: 'https://api.opendota.com/api/heroStats',  //point de sortie, URL de la requête
@@ -152,12 +148,6 @@ export default class Hero {
         // Step through each image in the DOM, clone it, attach an onload event
         // listener, then set its source to the source of the original image. When
         // that new image has loaded, fire the imageLoaded() callback.
-        currentTime = performance.now();
-        if(currentTime - startTime > 300 && firstLoading) {
-            $('.containerLoad').css('display', 'block');
-            alert("c'est long");
-            firstLoading = false;
-        }
         $('img').each(function(idx, img) {
             
           $('<img>').on('load', imageLoaded).attr('src', $(img).attr('src'));
@@ -175,7 +165,6 @@ export default class Hero {
         }
         function allImagesLoaded() {          
           $(".char").removeClass('containerAppear'); //Enlever le flou de la page une fois qu'on a tout chargé
-          $('.containerLoad').css('display', 'none');
         }
     }
 }

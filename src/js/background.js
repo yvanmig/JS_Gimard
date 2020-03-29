@@ -1,6 +1,4 @@
 import $ from 'jquery';
-import Greeting from './greeting';
-import Hero from './hero';
 
 /*
 * Objectif : récupérer une image aléatoire à partir d'une API et l'afficher
@@ -21,11 +19,9 @@ export default class Background
 	{
 		this.$Els = {
 			background : $('.js-background'),
-			background2 : $('.js-background2'),
-			background3 : $('.js-background3'),
 		}
 		this.url = 'https://source.unsplash.com/collection';
-		this.cat = '6780963';
+		this.cat = '9787440'; //id d'une collection sur unsplash créée pour le site
 		this.size = '1920x1080';
 
 	}
@@ -39,7 +35,6 @@ export default class Background
 			const image = new Image();
 			image.src = `${this.url}/${this.cat}/${this.size}`;
 			image.onload = () => {
-				console.log(image);
 				resolve(image);
 			};
 			image.onerror = (error) => {
@@ -61,7 +56,5 @@ export default class Background
 	addBackground(image) {
 		this.$Els.background.css('background-image', `url(${image.src})`);
 		this.$Els.background.addClass('is-ready');
-		new Hero();
-		new Greeting();
 	}
 }

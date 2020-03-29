@@ -1,6 +1,6 @@
 import '../css/app.scss';
 import Background from './background';
-import Class from './hero';
+import Hero from './hero';
 
 
 class App {
@@ -11,7 +11,7 @@ class App {
     initApp () {
       // Start application
       new Background();
-      // new Class();
+      new Hero();
 
     }
 }

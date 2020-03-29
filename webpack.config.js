@@ -11,7 +11,10 @@ config = {
     // stats: {warnings:false},
     // Mode can be 'development' or 'production'
     mode: 'development',
-
+    stats: 'errors-only',
+    performance: {
+        hints: false
+      },
     entry: './src/js/index.js',
 
     output: {
