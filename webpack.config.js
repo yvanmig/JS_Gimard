@@ -15,15 +15,10 @@ config = {
     performance: {
         hints: false
       },
-    // entry: './src/js/index.js',
-    entry: {
-        index :'./src/js/index.js',
-        background :'./src/js/background.js',
-        hero :'./src/js/hero.js',
-        statHelper :'./src/js//helpers/statHelper.js',
-    },
+    entry: './src/js/index.js',
+
     output: {
-        filename: '[name].js',
+        filename: 'main.js',
         path: PATHS.dist,
     },
 
