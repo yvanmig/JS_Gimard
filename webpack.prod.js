@@ -52,6 +52,7 @@ config = {
                         options: {
                             context: PATHS.src,
                             name: `[path][name].[ext]`,
+                            esModule: false,
                         },
                     }
                 ]
@@ -63,6 +64,7 @@ config = {
                     options: {
                         context: PATHS.src,
                         name: '[path][name].[ext]',
+                        
                     },
                 }]
             },

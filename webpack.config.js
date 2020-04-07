@@ -27,6 +27,7 @@ config = {
             {
                 test: /\.html$/,
                 use: 'html-loader'
+
             },
             {
                 enforce: 'pre',
@@ -48,14 +49,22 @@ config = {
             {
                 test: /\.(png|jpg|gif)$/,
                 use: [
+                    // {
+                    //     loader: 'file-loader',
+                    //     options: {
+                    //         context: PATHS.src,
+                    //         name: `[path][name].[ext]`,
+                    //         esModule: false,
+                    //     },
+                    // }
                     {
-                        loader: 'file-loader',
+                        loader: 'url-loader',
                         options: {
-                            context: PATHS.src,
-                            name: `[path][name].[ext]`,
+                            limit : 8000,
                             esModule: false,
                         },
                     }
+
                 ]
             },
             {
