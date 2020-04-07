@@ -49,21 +49,21 @@ config = {
             {
                 test: /\.(png|jpg|gif)$/,
                 use: [
-                    // {
-                    //     loader: 'file-loader',
-                    //     options: {
-                    //         context: PATHS.src,
-                    //         name: `[path][name].[ext]`,
-                    //         esModule: false,
-                    //     },
-                    // }
                     {
-                        loader: 'url-loader',
+                        loader: 'file-loader',
                         options: {
-                            limit : 8000,
+                            context: PATHS.src,
+                            name: `[path][name].[ext]`,
                             esModule: false,
                         },
                     }
+                    // {
+                    //     loader: 'url-loader',
+                    //     options: {
+                    //         limit : 8000,
+                    //         esModule: false,
+                    //     },
+                    // }
 
                 ]
             },
